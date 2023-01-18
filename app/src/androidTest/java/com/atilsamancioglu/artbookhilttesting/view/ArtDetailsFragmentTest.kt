@@ -41,7 +41,7 @@ class ArtDetailsFragmentTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Inject
-    lateinit var fragmentFactory : ArtFragmentFactory
+    lateinit var fragmentFactory: ArtFragmentFactory
 
     @Before
     fun setup() {
@@ -55,7 +55,7 @@ class ArtDetailsFragmentTest {
         launchFragmentInHiltContainer<ArtDetailsFragment>(
             factory = fragmentFactory
         ) {
-            Navigation.setViewNavController(requireView(),navController)
+            Navigation.setViewNavController(requireView(), navController)
         }
 
         Espresso.onView(ViewMatchers.withId(R.id.artImageView)).perform(ViewActions.click())
@@ -70,7 +70,7 @@ class ArtDetailsFragmentTest {
         launchFragmentInHiltContainer<ArtDetailsFragment>(
             factory = fragmentFactory
         ) {
-            Navigation.setViewNavController(requireView(),navController)
+            Navigation.setViewNavController(requireView(), navController)
         }
 
         pressBack()
@@ -95,7 +95,8 @@ class ArtDetailsFragmentTest {
             Art(
                 "Mona Lisa",
                 "Da Vinci",
-                1700,"")
+                1700, ""
+            )
         )
 
     }

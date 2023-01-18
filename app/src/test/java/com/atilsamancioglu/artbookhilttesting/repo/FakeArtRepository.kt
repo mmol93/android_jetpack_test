@@ -7,6 +7,7 @@ import com.atilsamancioglu.artbookhilttesting.roomdb.Art
 import com.atilsamancioglu.artbookhilttesting.util.Resource
 
 /**
+ * 해당 패키지(test)에서 실시하는 테스트는 Local Unit 테스트이며 에뮬레이터가 필요하지 않다
  * viewModel 테스트에 사용하기 위한 Fake Repository 클래스
  * 이 Repository의 목적은 viewModel의 기능을 테스트하기 위함이기 때문에
  * 똑같이 ArtRepositoryInterface을 상속받으며

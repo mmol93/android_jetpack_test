@@ -3,11 +3,9 @@ package com.atilsamancioglu.artbookhilttesting.repo
 import androidx.lifecycle.LiveData
 import com.atilsamancioglu.artbookhilttesting.api.RetrofitAPI
 import com.atilsamancioglu.artbookhilttesting.model.ImageResponse
-import com.atilsamancioglu.artbookhilttesting.model.ImageResult
 import com.atilsamancioglu.artbookhilttesting.roomdb.Art
 import com.atilsamancioglu.artbookhilttesting.roomdb.ArtDao
 import com.atilsamancioglu.artbookhilttesting.util.Resource
-import retrofit2.Response
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -25,7 +23,7 @@ class ArtRepository @Inject constructor(
     }
 
     override fun getArt(): LiveData<List<Art>> {
-        return artDao.observeArts()
+        return artDao.getArtsData()
     }
 
     override suspend fun searchImage(imageString: String): Resource<ImageResponse> {
@@ -42,6 +40,4 @@ class ArtRepository @Inject constructor(
             Resource.error("No data!", null)
         }
     }
-
-
 }
