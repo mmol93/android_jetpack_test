@@ -16,13 +16,12 @@ import javax.inject.Inject
 import javax.inject.Named
 
 /**
- * Room은 Context를 사용해야한다 = instrument test = 실제 애뮬레이터 기기를 사용한 테스트가 필요하다
+ * Room은 Context를 사용해야한다 = instrumented test = 실제 애뮬레이터 기기를 사용한 테스트가 필요하다
  * 그렇기 때문에 (test) 패키지가 아닌 (androidTest) 패키지에서 테스트를 실시한다
  * 테스트를 실행해보면 에뮬레이터가 실행되서 테스트를 하는 것을 알 수 있다
  *
- * @smallTest: 200ms 미만의 짧은 테스트를 의미한다 = unit 테스트와 비슷함
- *
  * */
+// @smallTest: 200ms 미만의 짧은 테스트를 의미한다 = unit 테스트와 비슷함
 @SmallTest
 @ExperimentalCoroutinesApi
 @HiltAndroidTest
@@ -50,6 +49,7 @@ class ArtDaoTest {
     fun setup() {
         // inMemoryDatabaseBuilder: Room DB를 Memory에서 구축한다 = 테스트를 위한 임시 DB를 생성한다
         // allowMainThreadQueries: mainThread에서 실시할 수 있게 해준다
+        // 하지만 이러한 방법을 사용하면 @Test를 할 때마다 database 객체를 만들게 된다
         /*
         database = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),ArtDatabase::class.java)

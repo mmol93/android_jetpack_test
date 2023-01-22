@@ -17,6 +17,8 @@ import org.junit.Test
 @ExperimentalCoroutinesApi
 class ArtViewModelTest {
 
+    // 이 안에 있는 모든 테스트를 하나의 스레드에서 실시
+    // viewModel 테스트라면 반드시 설정해야함
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 

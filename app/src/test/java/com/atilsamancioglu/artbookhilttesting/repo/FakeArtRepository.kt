@@ -36,7 +36,7 @@ class FakeArtRepository : ArtRepositoryInterface {
 
     // 이미지를 찾는 테스트는 의미 없는 ImageResponse를 반환하도록 했다
     override suspend fun searchImage(imageString: String): Resource<ImageResponse> {
-        return Resource.success(ImageResponse(listOf(),0,0))
+        return Resource.success(ImageResponse(listOf(), 0, 0))
     }
 
     private fun refreshLiveData() {
