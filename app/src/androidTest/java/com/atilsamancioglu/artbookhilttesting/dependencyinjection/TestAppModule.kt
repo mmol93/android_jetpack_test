@@ -20,6 +20,4 @@ object TestAppModule {
         Room.inMemoryDatabaseBuilder(context, ArtDatabase::class.java)
             .allowMainThreadQueries()
             .build()
-
-
 }

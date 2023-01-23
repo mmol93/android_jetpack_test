@@ -24,6 +24,7 @@ import javax.inject.Named
 // @smallTest: 200ms 미만의 짧은 테스트를 의미한다 = unit 테스트와 비슷함
 @SmallTest
 @ExperimentalCoroutinesApi
+// Test에서 Hilt를 사용할거라는 의미
 @HiltAndroidTest
 class ArtDaoTest {
 
