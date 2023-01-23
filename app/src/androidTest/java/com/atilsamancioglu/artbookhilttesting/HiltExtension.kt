@@ -12,6 +12,10 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 
 /**
+ * 여기에 있는 모든 코드는 구글에서 제공한 코드임
+ * https://github.com/android/architecture-samples/blob/views-hilt/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/HiltExt.kt#L37
+ * 하지만 조금 커스텀 했음
+ *
  * launchFragmentInContainer from the androidx.fragment:fragment-testing library
  * is NOT possible to use right now as it uses a hardcoded Activity under the hood
  * (i.e. [EmptyFragmentActivity]) which is not annotated with @AndroidEntryPoint.
@@ -24,6 +28,7 @@ import androidx.test.core.app.ApplicationProvider
 inline fun <reified T : Fragment> launchFragmentInHiltContainer(
     fragmentArgs: Bundle? = null,
     @StyleRes themeResId: Int = R.style.FragmentScenarioEmptyFragmentActivityTheme,
+    // FragmentFactory가 필요하기 때문에 추가해서 사용함
     factory: FragmentFactory,
     crossinline action: T.() -> Unit = {}
 ) {
