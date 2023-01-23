@@ -7,6 +7,7 @@ import com.atilsamancioglu.artbookhilttesting.roomdb.Art
 import com.atilsamancioglu.artbookhilttesting.util.Resource
 
 /**
+ * 해당 패키지(test)에서 실시하는 테스트는 Local Unit 테스트이며 에뮬레이터가 필요하지 않다
  * viewModel 테스트에 사용하기 위한 Fake Repository 클래스
  * 이 Repository의 목적은 viewModel의 기능을 테스트하기 위함이기 때문에
  * 똑같이 ArtRepositoryInterface을 상속받으며
@@ -35,7 +36,7 @@ class FakeArtRepository : ArtRepositoryInterface {
 
     // 이미지를 찾는 테스트는 의미 없는 ImageResponse를 반환하도록 했다
     override suspend fun searchImage(imageString: String): Resource<ImageResponse> {
-        return Resource.success(ImageResponse(listOf(),0,0))
+        return Resource.success(ImageResponse(listOf(), 0, 0))
     }
 
     private fun refreshLiveData() {

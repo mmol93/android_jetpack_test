@@ -26,7 +26,7 @@ class FakeArtRepositoryAndroid : ArtRepositoryInterface {
     }
 
     override suspend fun searchImage(imageString: String): Resource<ImageResponse> {
-        return Resource.success(ImageResponse(listOf(),0,0))
+        return Resource.success(ImageResponse(listOf(), 0, 0))
     }
 
     private fun refreshLiveData() {

@@ -3,7 +3,7 @@
     package="com.atilsamancioglu.artbookhilttesting">
 
     <application>
-
+        <!-- 새로 정의한 Activity를 명시해준다-->
         <activity android:name=".HiltTestActivity"
             android:exported="false">
 

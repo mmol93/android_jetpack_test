@@ -4,7 +4,6 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.test.espresso.Espresso
-import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
@@ -37,7 +36,7 @@ class ImageApiFragmentTest {
     var hiltRule = HiltAndroidRule(this)
 
     @Inject
-    lateinit var fragmentFactory : ArtFragmentFactory
+    lateinit var fragmentFactory: ArtFragmentFactory
 
     @Before
     fun setup() {
@@ -50,17 +49,17 @@ class ImageApiFragmentTest {
         val selectedImageUrl = "atilsamancioglu.com"
         val testViewModel = ArtViewModel(FakeArtRepositoryAndroid())
 
-         launchFragmentInHiltContainer<ImageApiFragment>(
+        launchFragmentInHiltContainer<ImageApiFragment>(
             factory = fragmentFactory,
         ) {
-            Navigation.setViewNavController(requireView(),navController)
-             imageRecyclerAdapter.images = listOf(selectedImageUrl)
-             viewModel = testViewModel
+            Navigation.setViewNavController(requireView(), navController)
+            imageRecyclerAdapter.images = listOf(selectedImageUrl)
+            viewModel = testViewModel
         }
 
         Espresso.onView(ViewMatchers.withId(R.id.imageRecyclerView)).perform(
             RecyclerViewActions.actionOnItemAtPosition<ImageRecyclerAdapter.ImageViewHolder>(
-                0,click()
+                0, click()
             )
 
         )
