@@ -9,3 +9,5 @@ JetPack에서 많이 사용되는 요소들에 대한 UnitTest 예제
 4. Fragment
 5. Espress And Mockito
 6. RecyclerView
+
+자세한 정보는 Notion에 기록했음
