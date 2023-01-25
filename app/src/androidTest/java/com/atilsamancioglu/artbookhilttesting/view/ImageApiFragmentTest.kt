@@ -46,6 +46,7 @@ class ImageApiFragmentTest {
     @Test
     fun testSelectImage() {
         val navController = Mockito.mock(NavController::class.java)
+        // RecyclerView에 들어갈 imageURL
         val selectedImageUrl = "atilsamancioglu.com"
         val testViewModel = ArtViewModel(FakeArtRepositoryAndroid())
 
@@ -53,19 +54,22 @@ class ImageApiFragmentTest {
             factory = fragmentFactory,
         ) {
             Navigation.setViewNavController(requireView(), navController)
+            // 어댑터에 필요한 데이터를 여기서 넣어준다
             imageRecyclerAdapter.images = listOf(selectedImageUrl)
             viewModel = testViewModel
         }
 
         Espresso.onView(ViewMatchers.withId(R.id.imageRecyclerView)).perform(
+            // RecyclerViewActions: RecyclerView에 특정 행동을 할 수 있게 해준다
+            // actionOnItemAtPosition: 특정 아이템의 특정 포지션의 view에 특정 동작을 할 수 있게 해준다
             RecyclerViewActions.actionOnItemAtPosition<ImageRecyclerAdapter.ImageViewHolder>(
                 0, click()
             )
-
         )
 
         Mockito.verify(navController).popBackStack()
 
+        // RecyclerView에 들어간 값이 위에서 정의한 값(selectedImageUrl)과 동일한지 확인한다
         assertThat(testViewModel.selectedImageUrl.getOrAwaitValue()).isEqualTo(selectedImageUrl)
 
     }
