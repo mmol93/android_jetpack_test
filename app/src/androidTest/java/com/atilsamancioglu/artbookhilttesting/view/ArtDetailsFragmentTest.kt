@@ -79,18 +79,24 @@ class ArtDetailsFragmentTest {
 
     @Test
     fun testSave() {
+        // FakeArtRepositoryAndroid는 이전에 UnitTest에서 만든 FakeRepository를 그대로 복사해와서 사용한다
         val testViewModel = ArtViewModel(FakeArtRepositoryAndroid())
         launchFragmentInHiltContainer<ArtDetailsFragment>(
             factory = fragmentFactory
         ) {
+            // launchFragmentInHiltContainer를 사용하여 Test용 Fragment를 만들었기 때문에
+            // 실제 ArtDetailsFragment 안에 있는 viewModel을 지정해서 정의할 수 있다
             viewModel = testViewModel
         }
 
+        // 각각의 textView에 text 집어넣기
         onView(withId(R.id.nameText)).perform(replaceText("Mona Lisa"))
         onView(withId(R.id.artistText)).perform(replaceText("Da Vinci"))
         onView(withId(R.id.yearText)).perform(replaceText("1700"))
         onView(withId(R.id.saveButton)).perform(click())
 
+        // Fake로 save한 데이터가 잘 들어가있는지 확인한다
+        // * 이는 실제 Room DB를 확인하는 것이 아님에 주의한다
         assertThat(testViewModel.artList.getOrAwaitValue()).contains(
             Art(
                 "Mona Lisa",
@@ -98,7 +104,5 @@ class ArtDetailsFragmentTest {
                 1700, ""
             )
         )
-
     }
-
 }
